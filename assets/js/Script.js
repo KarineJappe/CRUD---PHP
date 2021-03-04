@@ -7,6 +7,12 @@ $(document).ready(function() {
         $('#myModal').modal('show');
     });
 
+    $("#data").datepicker({
+        format: " yyyy",
+        viewMode: "years", 
+        minViewMode: "years"
+    });
+
     $( "#cadastro" ).on('submit', function( event ) {
         if(!validar()){
             event.preventDefault();

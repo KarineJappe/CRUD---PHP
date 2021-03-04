@@ -19,33 +19,33 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-5">
                                 <label for="modelo">Modelo:</label>
                                 <input type="text" class="form-control" name="modelo" required>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-3">
                                 <label for="ano">Ano:</label>
-                                <input type="text" class="form-control" name="ano" maxlength="4" required>
+                                <input type="text" id="data" class="form-control" name="ano" maxlength="4" required>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="placa">Placa:</label>
                                 <input type="text" class="form-control" id="placa" name="placa" minlength="7" maxlength="7" required>
                             </div>
-                            <div class="form-check form-check-inline col-md-5">
+                        </div>
+                        <div class="form-row">
                                 <?php
                                     require_once("controllers/Caracteristica.php");
                                     $caracteristica = new CaracteristicaController();
                                     $array = $caracteristica -> listarCaracteristica();
                                 foreach($array as $caracteristica){ ?>
-                                <input class="form-check-input" name="caracteristica[]" type="checkbox" value="<?=$caracteristica['id']?>">
-                                <label class="form-check-label"for=""><?=$caracteristica["nome"]?></label>
+                                <div class="form-check form-check-inline col-md-3">
+                                    <input class="form-check-input" name="caracteristica[]" id="caracteristica-<?=$caracteristica['id']?>" type="checkbox" value="<?=$caracteristica['id']?>">
+                                    <label class="form-check-label"for="caracteristica-<?=$caracteristica['id']?>"><?=$caracteristica["nome"]?></label>
+                                </div>
                                 <?php } ?>
-                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="offset-10 col-md-2">
+                            <div class=" form-group offset-10 col-md-2">
                                 <button type="submit" class="btn btn-danger">Cadastrar</button>
                             </div>
                         </div>

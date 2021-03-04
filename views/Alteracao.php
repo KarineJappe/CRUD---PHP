@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center mb-5 mt-5" >Formulário de alteração </h1>
+                <h1 class="text-center mb-5 mt-5" >Formulário de Alteração </h1>
             </div>
         </div>
         <div class="row">
@@ -26,22 +26,22 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="ano">Ano:</label>
-                            <input type="text" value="<?=$array['ano'];?>" name="ano" class="form-control" maxlength="4" required> <br>   
+                            <input type="text" id="data" value="<?=$array['ano'];?>" name="ano" class="form-control" maxlength="4" required> <br>   
                         </div>
                         <div class="form-group col-md-4">
                             <label for="placa">Placa:</label>
                             <input type="text" value="<?=$array['placa'];?>" name="placa" id="placa" class="form-control" minlength="7" maxlength="7" required> <br>   
                         </div>
-                        <div class="form-check form-check-inline col-md-4">
                             <?php
                                 require_once("controllers/Caracteristica.php");
                                 $caracteristica = new CaracteristicaController();
                                 $caracteristicas = $caracteristica -> listarCaracteristica();
                             foreach($caracteristicas as $c){?>
-                                <input class="form-check-input" name="caracteristica[]" type="checkbox" <?=$caracteristica -> caracteristicaSelecionada($c["id"], $array["id"]);?> value="<?=$c['id']?>">
-                                <label class="form-check-label"for=""><?=$c["nome"]?></label>
+                            <div class="form-check form-check-inline col-md-4">
+                                <input class="form-check-input" name="caracteristica[]" id="caracteristica-<?=$c['id']?>" type="checkbox" <?=$caracteristica -> caracteristicaSelecionada($c["id"], $array["id"]);?> value="<?=$c['id']?>">
+                                <label class="form-check-label"for="caracteristica-<?=$c['id']?>" ><?=$c["nome"]?></label>
+                            </div>
                             <?php } ?>
-                        </div>
                     </div>
                     <div class="form-row">
                         <div class="offset-10 col-md-2">
